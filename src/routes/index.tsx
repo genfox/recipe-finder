@@ -14,12 +14,12 @@ function App() {
           <div className="relative h-32 w-24 mx-auto mb-4">
             <img
               src="/images/cooking.svg"
-              alt="RecipeHub Logo"
+              alt="RecipeFinder Logo"
               style={{ height: 96, width: 96 }}
               className="object-contain"
             />
           </div>
-          <h1 className="text-4xl font-bold mb-2">RecipeHub</h1>
+          <h1 className="text-4xl font-bold mb-2">RecipeFinder</h1>
           <p className="text-muted-foreground">Find the perfect recipe for any occasion</p>
         </div>
         <SearchForm />

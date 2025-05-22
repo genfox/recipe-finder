@@ -19,7 +19,7 @@ export default function Header() {
             <div className="px-2 flex h-14 items-center">
                 <Link to="/" className="flex items-center gap-2 mr-4">
                     <Salad className="h-5 w-5 text-orange-500" />
-                    <span className="font-bold">RecipeHub</span>
+                    <span className="font-bold">RecipeFinder</span>
                 </Link>
 
                 {/* Desktop Navigation */}
@@ -44,7 +44,7 @@ export default function Header() {
                     {/* Search Dialog */}
                     <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
                         <DialogTrigger asChild>
-                            <Button variant="ghost" size="icon" className="mr-2 cursor-pointer">
+                            <Button variant="ghost" size="icon" className="cursor-pointer">
                                 <Search className="h-5 w-5" />
                                 <span className="sr-only">Search</span>
                             </Button>
@@ -72,7 +72,7 @@ export default function Header() {
                                 <SheetTitle>
                                     <Link to="/" className="flex items-center gap-2">
                                         <Salad className="h-5 w-5 text-orange-500" />
-                                        <span className="font-bold">RecipeHub</span>
+                                        <span className="font-bold">RecipeFinder</span>
                                     </Link>
                                 </SheetTitle>
                             </SheetHeader>
