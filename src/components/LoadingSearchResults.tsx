@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton"
 
-export function LoadingSearchResults() {
+export default function LoadingSearchResults() {
     return (
         <div className="container w-full max-w-7xl mx-auto p-8">
             <div className="mb-6">

@@ -3,6 +3,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import RecipeDetail from '@/components/RecipeDetail';
 
 import useFetchRecipeById from '@/hooks/useFetchRecipeById';
+import LoadingRecipeDetail from '@/components/LoadingRecipeDetail';
 
 export const Route = createFileRoute('/recipe/$recipeId')({
   component: SearchPage,
@@ -16,7 +17,7 @@ function SearchPage() {
   const {data, isLoading, error} = useFetchRecipeById(recipeId);
 
   if (isLoading) {
-    return <div>Loading results...</div>
+    return <div><LoadingRecipeDetail /></div>
   }
 
   if (error) {

@@ -1,6 +1,9 @@
-import RecipeDetail from '@/components/RecipeDetail';
-import useFetchRandomMeal from '@/hooks/useFetchRandomMeal'
 import { createFileRoute } from '@tanstack/react-router'
+
+import useFetchRandomMeal from '@/hooks/useFetchRandomMeal'
+
+import LoadingRecipeDetail from '@/components/LoadingRecipeDetail';
+import RecipeDetail from '@/components/RecipeDetail';
 
 export const Route = createFileRoute('/random')({
   component: RouteComponent,
@@ -10,7 +13,7 @@ function RouteComponent() {
   const { data, error, isLoading } = useFetchRandomMeal();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div><LoadingRecipeDetail /></div>
   }
 
   if (error) {

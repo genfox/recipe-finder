@@ -5,7 +5,7 @@ import { getSanitizedSearchQuery } from '@/lib/utils';
 
 import SearchResults from '@/components/SearchResults';
 import { NoMealsFound } from '@/components/NoMealsFound';
-import { LoadingSearchResults } from '@/components/LoadingSearchResults';
+import LoadingSearchResults from '@/components/LoadingSearchResults';
 
 export const Route = createFileRoute('/search/$query')({
   component: SearchPage,
