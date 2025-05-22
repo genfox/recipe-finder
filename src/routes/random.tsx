@@ -4,6 +4,7 @@ import useFetchRandomMeal from '@/hooks/useFetchRandomMeal'
 
 import LoadingRecipeDetail from '@/components/LoadingRecipeDetail';
 import RecipeDetail from '@/components/RecipeDetail';
+import { RequestError } from '@/components/RequestError';
 
 export const Route = createFileRoute('/random')({
   component: RouteComponent,
@@ -17,7 +18,7 @@ function RouteComponent() {
   }
 
   if (error) {
-    return <div>Error loading the random meal</div>;
+    return <div><RequestError /></div>;
   }
 
   if (!data) {

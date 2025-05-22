@@ -4,6 +4,8 @@ import RecipeDetail from '@/components/RecipeDetail';
 
 import useFetchRecipeById from '@/hooks/useFetchRecipeById';
 import LoadingRecipeDetail from '@/components/LoadingRecipeDetail';
+import { NoMealsFound } from '@/components/NoMealsFound';
+import { RequestError } from '@/components/RequestError';
 
 export const Route = createFileRoute('/recipe/$recipeId')({
   component: SearchPage,
@@ -20,13 +22,16 @@ function SearchPage() {
     return <div><LoadingRecipeDetail /></div>
   }
 
+  if (error && error.message === "Invalid id") {
+    return <div><NoMealsFound queryType="id" value={recipeId} /></div>
+  }
+
   if (error) {
-    return <div>Something went wrong</div>
+    return <div><RequestError /></div>
   }
 
   if (!data) {
-    // return <div><NoMealsFound query={query} /></div>
-    return <div>No meal found with id {recipeId}</div>
+    return <div><NoMealsFound queryType="id" value={recipeId} /></div>
   }
 
   return (

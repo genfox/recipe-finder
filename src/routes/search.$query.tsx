@@ -6,6 +6,7 @@ import { getSanitizedSearchQuery } from '@/lib/utils';
 import SearchResults from '@/components/SearchResults';
 import { NoMealsFound } from '@/components/NoMealsFound';
 import LoadingSearchResults from '@/components/LoadingSearchResults';
+import { RequestError } from '@/components/RequestError';
 
 export const Route = createFileRoute('/search/$query')({
   component: SearchPage,
@@ -25,11 +26,11 @@ function SearchPage() {
   }
 
   if (error) {
-    return <div>Something went wrong</div>
+    return <div><RequestError /></div>
   }
 
   if (!data || data?.length === 0) {
-    return <div><NoMealsFound query={query} /></div>
+    return <div><NoMealsFound queryType="query" value={query} /></div>
   }
 
   return (
