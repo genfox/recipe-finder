@@ -45,7 +45,7 @@ export default function RecipeDetail({ recipe }: { recipe: Meal }) {
     const tags = recipe.strTags ? recipe.strTags.split(",") : []
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen">
             {/* Hero Section with Full-width Image and Overlay */}
             <div className="relative h-[50vh] w-full">
                 <img
@@ -79,9 +79,9 @@ export default function RecipeDetail({ recipe }: { recipe: Meal }) {
                 {/* Recipe Meta Info */}
                 <div className="flex flex-wrap items-center justify-between mb-8 gap-4">
                     <div className="flex items-center gap-3 flex-wrap">
-                        <div className="flex items-center border rounded-md p-2 text-sm font-bold">
+                        <div className="bg-background dark:bg-input/30 flex items-center border rounded-md p-2 text-sm font-bold">
                             <Clock className="h-5 w-5 text-orange-500 mr-2" />
-                            <span className="text-gray-700">{new Date(recipe.dateModified ?? Date.now()).toLocaleDateString("en-EN")}</span>
+                            <span className="">{new Date(recipe.dateModified ?? Date.now()).toLocaleDateString("en-EN")}</span>
                         </div>
                         <div className="flex items-center">
                             <ToggleFavoriteRecipe meal={recipe} variant="icon-and-label" />
@@ -89,8 +89,6 @@ export default function RecipeDetail({ recipe }: { recipe: Meal }) {
                     </div>
 
                     <div className="flex gap-3 flex-wrap items-center">
-                        <FullScreenImage imageUrl={recipe.strMealThumb} imageAlt={recipe.strMeal} />
-
                         {recipe.strSource && (
                             <Button variant="outline" size="default" className="flex items-center" asChild>
                                 <a href={recipe.strSource} target="_blank" rel="noopener noreferrer">
@@ -99,6 +97,8 @@ export default function RecipeDetail({ recipe }: { recipe: Meal }) {
                                 </a>
                             </Button>
                         )}
+
+                        <FullScreenImage imageUrl={recipe.strMealThumb} imageAlt={recipe.strMeal} />
 
                         {recipe.strYoutube && (
                             <Button variant="outline" size="default" asChild>
@@ -118,12 +118,12 @@ export default function RecipeDetail({ recipe }: { recipe: Meal }) {
                     {/* Ingredients Column */}
                     <div className="md:col-span-1">
                         <div className="sticky top-8">
-                            <h2 className="text-2xl font-semibold mb-6 text-gray-900">Ingredients</h2>
+                            <h2 className="text-2xl font-semibold mb-6 text-foreground">Ingredients</h2>
                             <ul className="space-y-2">
                                 {ingredients.map((ingredient, index) => (
                                     <li key={index} className="pb-1 border-b border-gray-100">
-                                        <span className="font-medium text-gray-900 block">{ingredient.name}</span>
-                                        <span className="text-gray-600 text-sm">{ingredient.measure}</span>
+                                        <span className="font-medium block">{ingredient.name}</span>
+                                        <span className="text-muted-foreground text-sm">{ingredient.measure}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -132,12 +132,12 @@ export default function RecipeDetail({ recipe }: { recipe: Meal }) {
 
                     {/* Instructions Column */}
                     <div className="md:col-span-2">
-                        <h2 className="text-2xl font-semibold mb-6 text-gray-900">Instructions</h2>
+                        <h2 className="text-2xl font-semibold mb-6 text-foreground">Instructions</h2>
                         <div className="space-y-2">
                             {instructions.map((step, index) => (
                                 <div key={index}>
                                     <div className="py-6">
-                                        <p className="text-gray-700 leading-relaxed">{step}</p>
+                                        <p className="text-muted-foreground leading-relaxed">{step}</p>
                                     </div>
                                     {index < instructions.length - 1 && (
                                         <div className="flex items-center">

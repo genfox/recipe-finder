@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 
 
 import SearchForm from "./SearchForm"
+import ToggleTheme from "./ToggleTheme"
 
 export default function Header() {
     const [isSearchOpen, setIsSearchOpen] = useState(false)
@@ -55,6 +56,8 @@ export default function Header() {
                             <SearchForm onSearchCompleted={() => setIsSearchOpen(false)} />
                         </DialogContent>
                     </Dialog>
+
+                    <ToggleTheme />
 
                     {/* Mobile Menu */}
                     <Sheet>

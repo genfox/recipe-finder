@@ -33,8 +33,8 @@ export function RecipeSummary({ meal }: { meal: Meal }) {
                 </div>
                 <CardContent className="p-4">
                     <h3 className="text-lg font-semibold line-clamp-1 mb-1">{meal.strMeal}</h3>
-                    <p className="text-sm text-gray-500 mb-3">{meal.strArea} Cuisine</p>
-                    <p className="text-sm text-gray-700 line-clamp-2">{shortDescription}</p>
+                    <p className="text-sm text-muted-foreground/70 mb-3">{meal.strArea} Cuisine</p>
+                    <p className="text-sm text-muted-foreground line-clamp-2">{shortDescription}</p>
 
                     {tagList.length > 0 && (
                         <div className="flex gap-2 mt-3">
