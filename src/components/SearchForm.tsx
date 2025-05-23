@@ -10,6 +10,7 @@ interface SearchFormProps {
     showImFeelingHungry?: boolean
     showPopularSearches?: boolean
     showLastSearch?: boolean
+    autofocusSearchBar?: boolean
     onSearchCompleted?: () => void
 }
 
@@ -17,6 +18,7 @@ export default function SearchForm({
     showImFeelingHungry = true,
     showPopularSearches = true,
     showLastSearch = true,
+    autofocusSearchBar = false,
     onSearchCompleted
 }: SearchFormProps) {
     const navigate = useNavigate();
@@ -45,6 +47,9 @@ export default function SearchForm({
         <div>
             <form onSubmit={handleSearch} className="w-full">
                 <div className="relative mb-6">
+                    <label htmlFor="searchTerm" className="sr-only">
+                        Search for recipes...
+                    </label>
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <Input
                         id="searchTerm"
@@ -53,7 +58,7 @@ export default function SearchForm({
                         placeholder="Search for recipes..."
                         className="pl-10 py-6 text-lg"
                         required
-                        autoFocus
+                        autoFocus={autofocusSearchBar}
                     />
                 </div>
 
@@ -111,7 +116,7 @@ export default function SearchForm({
             {
                 showPopularSearches && (
                     <div className="space-y-2 border-t pt-3 mt-5">
-                        <h3 className="text-sm font-medium text-muted-foreground">Popular searches:</h3>
+                        <p className="text-sm font-medium text-muted-foreground">Popular searches:</p>
                         <div className="flex flex-wrap gap-2">
                             {getPopularSearches().map((item) => (
                                 <Link key={item} to="/search/$query" params={{ query: item }}>
