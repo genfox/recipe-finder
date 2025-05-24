@@ -16,11 +16,16 @@ export function RecipeSummary({ meal }: { meal: Meal }) {
     // Parse tags if they exist
     const tagList = meal.strTags ? meal.strTags.split(",").slice(0, 2) : [] // Show max 2 tags
 
+    let mealImage = "";
+    if (meal.strMealThumb) {
+        mealImage = `${meal.strMealThumb}/medium`; // get the small preview image for the recipe card
+    }
+
     return (
         <Link to="/recipe/$recipeId" params={{ recipeId: meal.idMeal }} viewTransition>
             <Card className="overflow-hidden h-full max-w-sm py-0 transition-all duration-200 hover:shadow-md hover:-translate-y-1">
                 <div className="aspect-video relative overflow-hidden">
-                    <img src={meal.strMealThumb || "/placeholder.svg?height=200&width=300"} alt={meal.strMeal} className="absolute inset-0 w-full h-full object-cover" />
+                    <img src={mealImage} alt={meal.strMeal} className="absolute inset-0 w-full h-full object-cover" />
                     <div className="absolute top-2 left-2 right-2">
                         <div className="flex justify-between">
                             <Badge className="bg-white/90 text-gray-800 cursor-default">{meal.strCategory}</Badge>
