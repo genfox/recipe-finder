@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, test, vi } from "vitest";
+import { beforeEach, describe, expect, test } from "vitest";
 import { getSanitizedSearchQuery } from "@/lib/utils";
 
 import mockRecipe from "./mocks/recipe";
