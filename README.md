@@ -130,6 +130,12 @@ These are written using **Vitest**.
 
 Cypress is used for full E2E testing. You can run the tests either headlessly or in the Cypress visual UI.
 
+- First run the dev server with:
+  ```bash
+  npm run dev
+    ```
+Then in another terminal
+
 - Run E2E tests headlessly (in Chrome):
   ```bash
   npm run e2e
