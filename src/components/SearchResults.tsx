@@ -1,5 +1,5 @@
 import type { Meal } from "@/lib/types";
-import { RecipeSummary } from "./RecipeSummary";
+import RecipeSummary from "./RecipeSummary";
 
 export default function SearchResults({ query, meals }: { query: string, meals: Meal[] }) {
     return (

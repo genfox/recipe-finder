@@ -1,4 +1,4 @@
-# Recipe Explorer
+# RecipeFinder
 
 A React web application built with modern web development tools to explore and manage your favorite recipes.
 
@@ -26,6 +26,9 @@ This application utilizes the [TheMealDB API](https://www.themealdb.com/api.php)
 
 ## Project Structure
 ```text
+cypress/             # e2e tests with cypress
+├── e2e/
+├── ...
 src/
 ├── components/
 │   ├── ui/             # Shadcn UI components
@@ -64,8 +67,8 @@ src/
 │   ├── appStore.ts
 │   ├── favoritesStore.ts
 │   └── lastSearchStore.ts
-├── assets/
-│   └── logo.svg
+├── test/                     # unit tests                
+│   └── ...
 ├── main.tsx
 └── ...
 ```
@@ -111,10 +114,34 @@ src/
 * **Recipe Details:** Click on a recipe to view its full details, including ingredients and instructions.
 * **Last Search:** The application remembers your recent searches, allowing for quicker revisits within a 24-hour window.
 
-## Testing
+## 🧪 Testing
 
-*(This section will be updated later once testing is integrated.)*
+This project includes both **unit/integration tests** (with [Vitest](https://vitest.dev)) and **end-to-end (E2E) tests** (with [Cypress](https://www.cypress.io)).
+
+### ✅ Unit & Integration Tests
+
+These are written using **Vitest**.
+
+- To run all tests:
+  ```bash
+  npm run test
+    ```
+### 🚀 End-to-End Tests (Cypress)
+
+Cypress is used for full E2E testing. You can run the tests either headlessly or in the Cypress visual UI.
+
+- Run E2E tests headlessly (in Chrome):
+  ```bash
+  npm run e2e
+    ```
+> This runs `npx cypress run --browser chrome` under the hood.
+
+- Run E2E tests in the browser (visual mode)::
+  ```bash
+  npm run e2e-visual
+    ```
+> This runs `npx cypress open` under the hood.
 
 ---
 
-Thank you for checking out the Recipe Explorer!
+Thank you for checking out the RecipeFinder!

@@ -1,25 +1,37 @@
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import type { Meal } from './types';
+
+export const POPULAR_SEARCHES = ["Pasta", "Chicken", "Fish", "Pie", "Cake"];
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function getSanitizedSearchQuery(query: string) : string | null {
-    const trimmedSearchTerm = query.trim();
+/**
+ * Sanitizes a search query string for use in URLs.
+ * It trims the input, decodes URI components, removes extra spaces,
+ * and then encodes the resulting string for URL safety.
+ * Returns `null` if the input query is empty after trimming.
+ *
+ * @param {string} query - The raw search query string.
+ * @returns {string | null} The sanitized and URL-encoded search query, or `null` if the input was empty.
+ */
+export function getSanitizedSearchQuery(query: string): string | null {
+  const trimmedSearchTerm = query.trim();
 
-    if (!trimmedSearchTerm) {
-      return null;
-    }
+  if (!trimmedSearchTerm) {
+    return null;
+  }
 
-    const searchTerm = decodeURIComponent(trimmedSearchTerm);
+  const searchTerm = decodeURIComponent(trimmedSearchTerm);
 
-    const searchTermNoSpaces = searchTerm.split(" ").filter(term => term !== "").join(" ");
+  const searchTermNoSpaces = searchTerm.split(" ").filter(term => term !== "").join(" ");
 
-    // Sanitize the search term for URL
-    const sanitizedTerm = encodeURIComponent(searchTermNoSpaces)
+  // Sanitize the search term for URL
+  const sanitizedTerm = encodeURIComponent(searchTermNoSpaces)
 
-    return sanitizedTerm;
+  return sanitizedTerm;
 }
 
 /**
@@ -58,6 +70,26 @@ export function isMoreThan24HoursPassed(date1: Date, date2: Date): boolean {
   return differenceInMilliseconds > twentyFourHoursInMilliseconds;
 }
 
-export function getPopularSearches() : string[] {
-  return ["Pasta", "Chicken", "Fish", "Pie", "Cake"];
+export function getPopularSearches(): string[] {
+  return POPULAR_SEARCHES;
+}
+
+/**
+ * Extracts a short description from a recipe's instructions.
+ * It takes the first paragraph of the instructions, trims it,
+ * and if it exceeds 120 characters, it truncates it and adds an ellipsis.
+ * If no instructions are available, it returns "No description available".
+ *
+ * @param {Meal} meal - The meal object containing the recipe details, including `strInstructions`.
+ * @returns {string} A short description of the recipe.
+ */
+export function getRecipeShortDescription(meal: Meal) {
+  const description = meal.strInstructions || "No description available";
+
+  let finalString = description.split("\r\n")[0];
+  finalString = finalString.trim();
+  if (finalString.length > 120) {
+    finalString = finalString.substring(0, 120).trim().concat("...");
+  }
+  return finalString;
 }

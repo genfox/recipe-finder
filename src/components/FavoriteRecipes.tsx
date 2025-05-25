@@ -1,5 +1,5 @@
 import type { Meal } from "@/lib/types";
-import { RecipeSummary } from "./RecipeSummary";
+import RecipeSummary from "./RecipeSummary";
 import { NoFavoriteFound } from "./NoFavoriteFound";
 
 export default function FavoriteRecipes({ meals }: { meals: Meal[] }) {

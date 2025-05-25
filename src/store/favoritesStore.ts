@@ -9,6 +9,7 @@ export interface FavoritesSlice {
         toggleFavorite: (meal: Meal) => void  // Add or remove a meal from favorites
         isFavorite: (meal: Meal) => boolean   // Gets if a Meal is favorite or not
         getFavoriteById: (idMeal: string) => Meal | null // Get a meal in the favorites by id (if present)
+        clear: () => void // Clear the store
     }
 }
 
@@ -63,6 +64,17 @@ const createFavoritesSlice: StateCreator<
             }
             return null;
         },
+
+        clear: () => {
+            const { favorites } = get();
+            set({
+                favorites: {
+                    ...favorites,
+                    favoriteIds: [],
+                    favoriteMeals: [],
+                }
+            })
+        }
     }
 });
 

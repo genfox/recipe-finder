@@ -40,6 +40,7 @@ export default function ToggleFavoriteRecipe({ meal, variant }: ToggleFavoriteRe
     if (variant === "only-icon") {
         return (
             <Badge
+                data-testid="test-favorite-button"
                 className="cursor-pointer bg-white/90 text-gray-800 hover:bg-white/80"
                 aria-label={label}
                 onClick={toggleLocalFavorite}
@@ -52,6 +53,7 @@ export default function ToggleFavoriteRecipe({ meal, variant }: ToggleFavoriteRe
 
     return (
         <Button
+            data-testid="test-favorite-button"
             variant="outline"
             className="cursor-pointer"
             onClick={toggleLocalFavorite}

@@ -52,6 +52,7 @@ export default function SearchForm({
                     </label>
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <Input
+                        data-testid="test-search-input"
                         id="searchTerm"
                         name="searchTerm"
                         type="search"
@@ -63,7 +64,7 @@ export default function SearchForm({
                 </div>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <Button type="submit" size="lg" className="px-8 cursor-pointer">
+                    <Button data-testid="test-search-button" type="submit" size="lg" className="px-8 cursor-pointer">
                         Search Recipes
                     </Button>
                     {
